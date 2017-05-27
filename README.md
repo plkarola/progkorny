@@ -1,17 +1,17 @@
 <h1>Sudoku</h1>
-A projekt egy klasszikus Sudoku játék megvalósítását tartalmazza.
-A játék egy adott pályája 9x9-es táblából áll. Minden cella egyetlen számjegyet tartalmazhat, 0 kivételével,
-úgy, hogy minden sorban, oszlopban, 3x3-as táblában minden számjegy csak egyszer szerepelhet.
+A projekt egy klasszikus Sudoku jÃ¡tÃ©k megvalÃ³sÃ­tÃ¡sÃ¡t tartalmazza.
+A jÃ¡tÃ©k egy adott pÃ¡lyÃ¡ja 9x9-es tÃ¡blÃ¡bÃ³l Ã¡ll. Minden cella egyetlen szÃ¡mjegyet tartalmazhat, 0 kivÃ©telÃ©vel,
+Ãºgy, hogy minden sorban, oszlopban, 3x3-as tÃ¡blÃ¡ban minden szÃ¡mjegy csak egyszer szerepelhet.
 
-<h2>Telepítés és futtatás</h2>
+<h2>TelepÃ­tÃ©s Ã©s futtatÃ¡s</h2>
 <ol>
 <li><code>git clone <link>https://github.com/plkarola/progkorny</link></code></li>
 
-<li><code>cd BeadandoA</code></li>
+<li><code>cd progkorny</code></li>
 
 <li><code>mvn install </code></li>
 
 <li><code>cd target</code></li>
 
 <li><code>java -jar Beadando-0.0.1-SNAPSHOT-jar-with-dependencies.jar</code></li>
-</ol>"# progkorny" 
+</ol>
