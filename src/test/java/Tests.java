@@ -116,4 +116,19 @@ public class Tests {
 	public void tablenumber() {
 		assertEquals(3, RT.tableNumber());
 	}
+	
+	@Test
+	public void row_new() {
+		engine.setMatrix(RT.returntable(0));
+		engine.insert(0, 0, 0);
+		assertEquals(true, engine.scan(0, 0, 0));
+	}
+	
+	@Test
+	public void matr_new() {
+		engine.setMatrix(RT.returntable(0));
+		engine.insert(8,0,0);
+		assertEquals(false, engine.scan(8, 0, 0));
+	
+	}
 }

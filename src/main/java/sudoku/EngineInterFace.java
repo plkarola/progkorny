@@ -1,5 +1,11 @@
 package sudoku;
 
+/**
+ * A játék alapvető logikájának váza.
+ * 
+ * @author plkar
+ *
+ */
 public interface EngineInterFace {
 
 	/**

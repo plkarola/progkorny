@@ -1,5 +1,11 @@
 package sudoku;
 
+/**
+ * A pályák beolvasására szolgáló interface.
+ * 
+ * @author plkar
+ *
+ */
 public interface ReadTableInterFace {
 
 	/**

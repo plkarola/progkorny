@@ -37,9 +37,9 @@ public class FXMain extends Application {
 				for (Node node : childrens) {
 					if(!engine.scan(engine.matrix[table.getRowIndex(node)][table.getColumnIndex(node)],  table.getRowIndex(node),table.getColumnIndex(node)))
 			        node.setStyle("-fx-control-inner-background:red;  -fx-padding: 1; -fx-pref-width: 3em; -fx-pref-height: 3em;");	
-					else
+					else {
 					node.setStyle("-fx-control-inner-background:beige;  -fx-padding: 1; -fx-pref-width: 3em; -fx-pref-height: 3em;");
-					
+					}
 					
 				}
 			
@@ -48,7 +48,7 @@ public class FXMain extends Application {
 	
 	
 	static Logger logger = LoggerFactory.getLogger(FXMain.class);
-	int tablecounter = 0;
+	int tablecounter = 2;
 	
 	boolean end = false;
 	@Override
@@ -133,6 +133,7 @@ public class FXMain extends Application {
 				});
 				if (engine.matrix[j][i] != 0) {
 					number.setEditable(false);
+					number.setStyle("-fx-control-inner-background:green;");
 					logger.info("A pálya alapból kitöltött mezőinek játékos általi irását letiltja.");
 				}
 				number.setId(Integer.toString(i)+Integer.toString(j));

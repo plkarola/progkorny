@@ -29,16 +29,18 @@ public class Engine implements EngineInterFace {
 		super();
 	}
 
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#getMatrix()
+	/**
+	 * @return viszzadja az aktuális táblát
 	 */
 	@Override
 	public int[][] getMatrix() {
 		return matrix;
 	}
 
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#setMatrix(int[][])
+	/**
+	 * Beállítja az aktuális táblát.
+	 * 
+	 * @param matrix a tábla, amivel játszani szeretnénk
 	 */
 	@Override
 	public void setMatrix(int[][] matrix ) {
@@ -46,8 +48,11 @@ public class Engine implements EngineInterFace {
 		init(matrix);
 	}
 
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#init(int[][])
+	/**
+	 * Feltölti a mátrixot, ami tárolja, hogy mely pozíción levő számjegyek voltak eleve adottak a táblában.
+	 * Ezeket a játékos nem módosíthatja.
+	 * 
+	 * @param matrix a tábla kezdőállapota
 	 */
 	@Override
 	public void init(int[][] matrix) {
@@ -58,8 +63,13 @@ public class Engine implements EngineInterFace {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#delete(int, int)
+	/**
+	 * Kitörli a táblából az adott pozíción levő számot.
+	 * 
+	 * @param pos_x törölni kívánt pozíció X koordinátája
+	 * @param pos_y törölni kívánt pozíció Z koordinátája
+	 * 
+	 * @return az adott pozícióról sikerült-e törölni az elemet
 	 */
 	@Override
 	public boolean delete(int pos_x, int pos_y) {
@@ -70,8 +80,14 @@ public class Engine implements EngineInterFace {
 		return false;
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#insert(int, int, int)
+	/**
+	 * A tábla megfelelő pozíciójára elhelyezi a kívánt számot.
+	 * 
+	 * @param number a játékos által beírni kívánt számjegy
+	 * @param pos_x azon pozíció X koordinátája, ahova a játékos be szeretné írni a számjegyet
+	 * @param pos_y azon pozíció Y koordinátája, ahova a játékos be szeretné írni a számjegyet
+	 * 
+	 * @return az adott pozícióra sikerült-e beírni a kívánt elemet
 	 */
 	@Override
 	public boolean insert(int number, int pos_x, int pos_y) {
@@ -83,8 +99,13 @@ public class Engine implements EngineInterFace {
 			
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#scan(int, int, int)
+	/**
+	 * Visszaadja, hogy a beírni kívánt szám elfogadható-e az adott pozícióra. Ellenőrizve ezt soron, oszlopon, és 3x3-as táblákon.
+	 * 
+	 * @param number a játékos által beírni kívánt számjegy
+	 * @param pos_x azon pozíció X koordinátája, ahova a játékos be szeretné írni a számjegyet
+	 * @param pos_y azon pozíció Y koordinátája, ahova a játékos be szeretné írni a számjegyet
+	 * @return az adott szám elfogadható-e az adott pozícióra
 	 */
 	@Override
 	public boolean scan(int number, int pos_x, int pos_y) {
@@ -95,6 +116,8 @@ public class Engine implements EngineInterFace {
 	}
 	
 	/**
+	 * Ellenőrzi, hogy a szám elfogadható-e az adott pozició sorába.
+	 * 
 	 * @param number a játékos által beírni kívánt számjegy
 	 * @param pos_x azon pozició X koordinátája, ahova a játékos be szeretné írni a számjegyet
 	 * @param pos_y azon pozició X koordinátája, ahova a játékos be szeretné írni a számjegyet
@@ -110,10 +133,12 @@ public class Engine implements EngineInterFace {
 	}
 
 	/**
+	 * Ellenőrzi, hogy a szám elfogadható-e az adott pozició oszlopába.
+	 * 
 	 * @param number a játékos által beírni kívánt számjegy
 	 * @param pos_x azon pozició X koordinátája, ahova a játékos be szeretné írni a számjegyet
 	 * @param pos_y azon pozíció Y koordinátája, ahova a játékos be szeretné írni a számjegyet
-	 * @return a szám szerepel-e az Y koordinátájú oszlopban.
+	 * @return a szám elfogadható-e az Y koordinátájú oszlopban.
 	 */
 	private boolean column(int number, int pos_x, int pos_y) {
 		for(int y=0; y<9; y++){
@@ -125,10 +150,12 @@ public class Engine implements EngineInterFace {
 	}
 	
 	/**
+	 * Ellenőrzi, hogy a szám szerepel-e a pozicióhoz tartozó 3x3-as táblában.
+	 * 
 	 * @param number a játékos által beírni kívánt számjegy
 	 * @param pos_x azon pozíció X koordinátája, ahova a játékos be szeretné írni a számjegyet
 	 * @param pos_y azon pozíció Y koordinátája, ahova a játékos be szeretné írni a számjegyet
-	 * @return a {@code number} szerepel-e abban a 3x3-as táblában, amelyben a koordinátákkal jelölt cella megtalálható.
+	 * @return a {@code number} elfogadható-e abban a 3x3-as táblában, amelyben a koordinátákkal jelölt cella megtalálható.
 	 */
 	private boolean matr(int number, int pos_x, int pos_y) {
 		int osztas_x, osztas_y, x, y;
@@ -146,8 +173,10 @@ public class Engine implements EngineInterFace {
 		return true;
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#verify()
+	/**
+	 * Ellenőrzi, hogy a tábla teljesen, és a szabályoknak megfelelően van-e feltöltve.
+	 * 
+	 * @return a tábla helyessége
 	 */
 	@Override
 	public boolean verify() {
@@ -162,8 +191,8 @@ public class Engine implements EngineInterFace {
 		return true;
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.EngineInterFace#write()
+	/**
+	 * Kiírja az aktuális táblát.
 	 */
 	@Override
 	public void write() {

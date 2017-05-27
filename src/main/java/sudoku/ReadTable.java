@@ -22,8 +22,11 @@ public class ReadTable implements ReadTableInterFace {
 		this.path = path;
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.ReadTableInterFace#returntable(int)
+	/**
+	 * Az adatbázisból kiolvassa az éppen következő táblát.
+	 * 
+	 * @param tableCounter megadja hanyadik tábla következik
+	 * @return az adatbázis {@code tableCounter} +1. táblája 
 	 */
 	@Override
 	public int[][] returntable(int tableCounter){
@@ -57,8 +60,10 @@ public class ReadTable implements ReadTableInterFace {
 		return matrix;
 	}
 	
-	/* (non-Javadoc)
-	 * @see sudoku.ReadTableInterFace#tableNumber()
+	/**
+	 * Megszámolja hány táblánk van az adatbázisban.
+	 * 
+	 * @return hány táblánk van az adatbázisban
 	 */
 	@Override
 	public int tableNumber() {
