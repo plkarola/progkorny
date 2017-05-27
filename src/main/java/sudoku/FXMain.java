@@ -53,7 +53,7 @@ public class FXMain extends Application {
 	boolean end = false;
 	@Override
 	public void start(Stage primaryStage) {
-		ReadTable RT = new ReadTable(getClass().getClassLoader().getResource("Tables/elsotabla.xml").toString());
+		ReadTableInterFace RT = new ReadTable(getClass().getClassLoader().getResource("Tables/elsotabla.xml").toString());
 		Engine engine = new Engine(RT.returntable(tablecounter));
 		GridPane table = new GridPane();
 		logger.info("Pálya vázának létrehozása a grafikus felületen.");

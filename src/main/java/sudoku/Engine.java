@@ -5,7 +5,7 @@ package sudoku;
  * 
  * @author plkar
  */
-public class Engine {
+public class Engine implements EngineInterFace {
 
 
 	int matrix [][]=new int[9][9];
@@ -29,29 +29,27 @@ public class Engine {
 		super();
 	}
 
-	/**
-	 * @return viszzadja az aktuális táblát
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#getMatrix()
 	 */
+	@Override
 	public int[][] getMatrix() {
 		return matrix;
 	}
 
-	/**
-	 * Beállítja az aktuális táblát.
-	 * 
-	 * @param matrix a tábla, amivel játszani szeretnénk
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#setMatrix(int[][])
 	 */
+	@Override
 	public void setMatrix(int[][] matrix ) {
 		this.matrix = matrix;
 		init(matrix);
 	}
 
-	/**
-	 * Feltölti a mátrixot, ami tárolja, hogy mely pozíción levő számjegyek voltak eleve adottak a táblában.
-	 * Ezeket a játékos nem módosíthatja.
-	 * 
-	 * @param matrix a tábla kezdőállapota
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#init(int[][])
 	 */
+	@Override
 	public void init(int[][] matrix) {
 		for(int x=0; x<9; x++) {
 			for(int y=0; y<9; y++) {
@@ -60,14 +58,10 @@ public class Engine {
 		}
 	}
 	
-	/**
-	 * Kitörli a táblából az adott pozíción levő számot.
-	 * 
-	 * @param pos_x törölni kívánt pozíció X koordinátája
-	 * @param pos_y törölni kívánt pozíció Z koordinátája
-	 * 
-	 * @return az adott pozícióról sikerült-e törölni az elemet
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#delete(int, int)
 	 */
+	@Override
 	public boolean delete(int pos_x, int pos_y) {
 		if (fix[pos_x][pos_y] == 0 ) {
 			matrix[pos_x][pos_y] = 0;
@@ -76,15 +70,10 @@ public class Engine {
 		return false;
 	}
 	
-	/**
-	 * A tábla megfelelő pozíciójára elhelyezi a kívánt számot.
-	 * 
-	 * @param number a játékos által beírni kívánt számjegy
-	 * @param pos_x azon pozíció X koordinátája, ahova a játékos be szeretné írni a számjegyet
-	 * @param pos_y azon pozíció Y koordinátája, ahova a játékos be szeretné írni a számjegyet
-	 * 
-	 * @return az adott pozícióra sikerült-e beírni a kívánt elemet
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#insert(int, int, int)
 	 */
+	@Override
 	public boolean insert(int number, int pos_x, int pos_y) {
 		if ((fix[pos_x][pos_y] == 0 )) {
 			matrix[pos_x][pos_y] = number;
@@ -94,14 +83,10 @@ public class Engine {
 			
 	}
 	
-	/**
-	 * Visszaadja, hogy a beírni kívánt szám elfogadható-e az adott pozícióra. Ellenőrizve ezt soron, oszlopon, és 3x3-as táblákon.
-	 * 
-	 * @param number a játékos által beírni kívánt számjegy
-	 * @param pos_x azon pozíció X koordinátája, ahova a játékos be szeretné írni a számjegyet
-	 * @param pos_y azon pozíció Y koordinátája, ahova a játékos be szeretné írni a számjegyet
-	 * @return az adott szám elfogadható-e az adott pozícióra
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#scan(int, int, int)
 	 */
+	@Override
 	public boolean scan(int number, int pos_x, int pos_y) {
 		if ((row(number, pos_x, pos_y) && column(number, pos_x, pos_y) && matr(number, pos_x, pos_y)) || number==0)
 			return true;
@@ -161,11 +146,10 @@ public class Engine {
 		return true;
 	}
 	
-	/**
-	 * Ellenőrzi, hogy a tábla teljesen, és a szabályoknak megfelelően van-e feltöltve.
-	 * 
-	 * @return a tábla helyessége
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#verify()
 	 */
+	@Override
 	public boolean verify() {
 		for(int x=0; x<9; x++) {
 			for(int y=0; y<9; y++) {
@@ -178,9 +162,10 @@ public class Engine {
 		return true;
 	}
 	
-	/**
-	 * Kiírja az aktuális táblát.
+	/* (non-Javadoc)
+	 * @see sudoku.EngineInterFace#write()
 	 */
+	@Override
 	public void write() {
 		for (int x=0; x<9; x++) {
 			for (int y=0; y<9; y++) {

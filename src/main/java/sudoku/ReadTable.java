@@ -9,7 +9,7 @@ import javax.xml.parsers.*;
  * @author plkar
  *
  */
-public class ReadTable {
+public class ReadTable implements ReadTableInterFace {
 	String path;
 
 	/**
@@ -22,12 +22,10 @@ public class ReadTable {
 		this.path = path;
 	}
 	
-	/**
-	 * Az adatbázisból kiolvassa az éppen következő táblát.
-	 * 
-	 * @param tableCounter megadja hanyadik tábla következik
-	 * @return az adatbázis {@code tableCounter} +1. táblája 
+	/* (non-Javadoc)
+	 * @see sudoku.ReadTableInterFace#returntable(int)
 	 */
+	@Override
 	public int[][] returntable(int tableCounter){
 		
 		int matrix [][]=new int[9][9];
@@ -59,11 +57,10 @@ public class ReadTable {
 		return matrix;
 	}
 	
-	/**
-	 * Megszámolja hány táblánk van az adatbázisban.
-	 * 
-	 * @return hány táblánk van az adatbázisban
+	/* (non-Javadoc)
+	 * @see sudoku.ReadTableInterFace#tableNumber()
 	 */
+	@Override
 	public int tableNumber() {
 		NodeList tablelist = null;
 		try{

@@ -3,12 +3,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import sudoku.Engine;
+import sudoku.EngineInterFace;
 import sudoku.ReadTable;
+import sudoku.ReadTableInterFace;
 
 public class Tests {
 
-	Engine engine = new Engine();
-	ReadTable RT = new ReadTable(getClass().getClassLoader().getResource("Tables/elsotabla.xml").getFile());
+	EngineInterFace engine = new Engine();
+	ReadTableInterFace RT = new ReadTable(getClass().getClassLoader().getResource("Tables/elsotabla.xml").getFile());
 	int [][] matrix = new int[9][9];
 	
 	@Test
@@ -19,7 +21,7 @@ public class Tests {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void Engine() {
-		Engine en = new Engine(matrix);
+		EngineInterFace en = new Engine(matrix);
 		assertEquals(matrix, en.getMatrix());
 	}
 	
