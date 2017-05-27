@@ -48,7 +48,7 @@ public class FXMain extends Application {
 	
 	
 	static Logger logger = LoggerFactory.getLogger(FXMain.class);
-	int tablecounter = 2;
+	int tablecounter = 0;
 	
 	boolean end = false;
 	@Override
