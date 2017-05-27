@@ -9,7 +9,7 @@ A játék egy adott pályája 9x9-es táblából áll. Minden cella egyetlen sz�
 
 <li><code>cd progkorny</code></li>
 
-<li><code>mvn install </code></li>
+<li><code>mvn clean package</code></li>
 
 <li><code>cd target</code></li>
 
