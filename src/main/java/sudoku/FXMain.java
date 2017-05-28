@@ -37,10 +37,8 @@ public class FXMain extends Application {
 				for (Node node : childrens) {
 					if(!engine.scan(engine.matrix[table.getRowIndex(node)][table.getColumnIndex(node)],  table.getRowIndex(node),table.getColumnIndex(node)))
 			        node.setStyle("-fx-control-inner-background:red;  -fx-padding: 1; -fx-pref-width: 3em; -fx-pref-height: 3em;");	
-					else {
+					else
 					node.setStyle("-fx-control-inner-background:beige;  -fx-padding: 1; -fx-pref-width: 3em; -fx-pref-height: 3em;");
-					}
-					
 				}
 			
 				
@@ -48,7 +46,7 @@ public class FXMain extends Application {
 	
 	
 	static Logger logger = LoggerFactory.getLogger(FXMain.class);
-	int tablecounter = 2;
+	int tablecounter = 0;
 	
 	boolean end = false;
 	@Override
@@ -73,7 +71,7 @@ public class FXMain extends Application {
 				logger.info("Cella létrehozása.");
 				number.textProperty().addListener(new ChangeListener<String>() {
 					public void changed(final ObservableValue<? extends String> observ, final String oldvalue, String newvalue ){
-						
+						end=false;
 						if (pattern.matcher(newvalue).matches()) {
 							logger.info("Minta érvényesitése: csak számjegyeket lehessen beirni a cellákba.");
 							if(newvalue.length()>-1) { 
@@ -98,42 +96,39 @@ public class FXMain extends Application {
 						} catch (Exception e) {;}
 						
 						
-							if(engine.verify()) {
+							if(engine.verify() && !end) {
+								end = true;
 								if (RT.tableNumber() > tablecounter+1) {
-									Alert alert = new Alert(AlertType.INFORMATION);
-									alert.setTitle("Palya vege");
-									alert.setHeaderText("Nyeremeny");
-									alert.setContentText("Nyertel. Kezdheted a kovetkezo palyat.");
-									alert.show();
-									logger.info("Adott pálya sikeresen befejezve. Következő pálya inditása.");
-
-									tablecounter++;
+									tablecounter++;;
+									start(primaryStage);
 									try {
 										Thread.sleep((long)30);
 										} catch (InterruptedException e) {
 											e.printStackTrace();
 										}
-									start(primaryStage);
+									Alert alert = new Alert(AlertType.INFORMATION);
+									alert.setTitle("Pálya vége");
+									alert.setHeaderText("Nyeremény");
+									alert.setContentText("Nyertél. Kezdheted a következő pályát.");
+									alert.show();
+									logger.info("Adott pálya sikeresen befejezve. Következő pálya inditása.");
 								}
 								else 
 								{
 									Alert alert = new Alert(AlertType.INFORMATION);
-									alert.setTitle("Jatek vege");
-									alert.setHeaderText("Nyeremeny");
-									alert.setContentText("Nyertel. Befejezted az osszes palyat.");
+									alert.setTitle("Játék vége");
+									alert.setHeaderText("Nyeremény");
+									alert.setContentText("Nyertél. Befejezted az összes pályát.");
 									alert.show();
 									logger.info("Összes pálya sikeresen befejezve.");
 									primaryStage.close();
 								}
-											
-						
 							}
 							errored(table , engine);
 					}
 				});
 				if (engine.matrix[j][i] != 0) {
 					number.setEditable(false);
-					number.setStyle("-fx-control-inner-background:green;");
 					logger.info("A pálya alapból kitöltött mezőinek játékos általi irását letiltja.");
 				}
 				number.setId(Integer.toString(i)+Integer.toString(j));

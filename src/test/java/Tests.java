@@ -44,7 +44,7 @@ public class Tests {
 	
 	@Test
 	public void not_insert() {
-		matrix = RT.returntable(1);
+		matrix = RT.returntable(2);
 		engine.setMatrix(matrix);
 		assertEquals(false, engine.insert(4, 0, 0));
 	}
@@ -57,35 +57,35 @@ public class Tests {
 	
 	@Test
 	public void not_insert_matr() {
-		matrix = RT.returntable(2);
+		matrix = RT.returntable(1);
 		engine.setMatrix(matrix);
 		assertEquals(false, engine.insert(3, 6, 1));
 	}
 	
 	@Test
 	public void not_insert_column() {
-		matrix = RT.returntable(2);
+		matrix = RT.returntable(1);
 		engine.setMatrix(matrix);
 		assertEquals(false, engine.insert(1, 2, 1));
 	}
 	
 	@Test
 	public void not_insert_fix() {
-		matrix = RT.returntable(2);
+		matrix = RT.returntable(1);
 		engine.setMatrix(matrix);
 		assertEquals(false, engine.insert(6, 2, 2));
 	}
 	
 	@Test
 	public void not_insert_fix_scan() {
-		matrix = RT.returntable(2);
+		matrix = RT.returntable(1);
 		engine.setMatrix(matrix);
 		assertEquals(false, engine.insert(3, 2, 2));
 	}
 	
 	@Test
 	public void not_insert_fix_new() {
-		matrix = RT.returntable(2);
+		matrix = RT.returntable(1);
 		engine.setMatrix(matrix);
 		assertEquals(false, engine.insert(3, 2, 2));
 	}
@@ -99,7 +99,7 @@ public class Tests {
 	
 	@Test
 	public void delete_ok() {
-		matrix = RT.returntable(2);
+		matrix = RT.returntable(1);
 		engine.setMatrix(matrix);
 		assertEquals(true, engine.delete(0, 0));
 	}
@@ -114,7 +114,7 @@ public class Tests {
 	
 	@Test
 	public void tablenumber() {
-		assertEquals(3, RT.tableNumber());
+		assertEquals(4, RT.tableNumber());
 	}
 	
 	@Test
